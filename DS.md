@@ -59,4 +59,64 @@ While i < 11 Do <br>
 &nbsp;&nbsp;&nbsp; i = i + 1 <br>
     - ! They don't depend on n
 
-- The following run in <b>linear</b> time O(n):
+- The following run in <b>linear</b> time O(n): <br>
+i := 0 <br>
+While i < n Do <br>
+&nbsp;&nbsp;&nbsp; i = i + 1 <br>
+f(n) = n <br>
+O(f(n)) = O(n) <br><br>
+i := 0 <br>
+While i < n Do
+&nbsp;&nbsp;&nbsp; i = i + 3 <br>
+f(n) = n/3 <br>
+O(f(n)) = O(n)
+
+- Both of the following run in <b>quadratic</b> time. The first may be obvious since <em>n</em> work done <em>n</em> is n\*n = O(n<sup>2</sup>), but what about the second one? <br>
+For (i := 0; i < n; i = i + 1) <br>
+&nbsp;&nbsp;&nbsp; For (j := 0; j < n; j = j + 1) <br>
+f(n) = n\*n = n<sup>2</sup>, O(f(n)) = O(n<sup>2</sup>) <br><br>
+For (i := 0; i < n; i = i + 1) <br>
+&nbsp;&nbsp;&nbsp; For (j := i; j < n; j = j + 1) -> replaced 0 with i <br>
+Since <em>i</em> goes from [0,n) the amount of looping done is directly determined by what <em>i</em> is. Remark that if <b><em>i=0</em></b>, we do <em>n</em> work, if <em>i=1</em>, we do <em>n-1</em> work, if <em>i=2</em>, we do <em>n-2</em> work, etc. <br>
+So the question then becomes what is (n) + (n-1) + (n-2) + (n-3) + ... + 3 + 2 + 1? Remarkably this turns out to be <em>n(n+1)/2</em>, so O(n(n+1)/2) = O(n<sup>2</sup>/2 + n/2) = <b>O(n<sup>2</sup>)</b> <br><br>
+Another example is of an outer loop that does <em>n</em> work and two inner loops that do <em>3n</em> work and <em>2n</em> work. Generally speaking, we multiply loops on different levels and we add those on the same level <br>
+i := 0 <br>
+While i < n Do <br>
+&nbsp;&nbsp;&nbsp; j = 0 <br>
+&nbsp;&nbsp;&nbsp; While j < 3\*n Do <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j = j + 1 <br>
+&nbsp;&nbsp;&nbsp; j = 0 <br>
+&nbsp;&nbsp;&nbsp; While j < 2\*n Do <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j = j + 1 <br>
+&nbsp;&nbsp;&nbsp; i = i + 1 <br>
+f(n) = n * (3n + 2n) = 5n<sup>2</sup> <br>
+O(f(n)) = <b>O(n<sup>2</sup>)</b> <br><br>
+And again similar but not the same: <br>
+i := 0 <br>
+While i < 3\*n Do <br>
+&nbsp;&nbsp;&nbsp; j := 10 <br>
+&nbsp;&nbsp;&nbsp; While j <=50 Do <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j = j + 1 <br>
+&nbsp;&nbsp;&nbsp; j = 0 <br>
+&nbsp;&nbsp;&nbsp; While j < n\*n\*n Do <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j = j + 2 <br>
+&nbsp;&nbsp;&nbsp; i = i + 1 <br>
+f(n) = 3n * (40 + n<sup>3</sup>/2) = 120n + 3n<sup>4</sup>/2 <br>
+O(f(n)) = <b>O(n<sup>4</sup>)</b> <br><br>
+
+- <b>Logarithmic</b> time. Suppose we have a sorted array and we want to find the index of a particular value in the array, if it exists. What is the time complexity of the following algorithm? <br>
+low := 0 <br>
+high := n-1 <br>
+While low <= high Do <br>
+&nbsp;&nbsp;&nbsp; mid := (low + high) / 2 <br>
+&nbsp;&nbsp;&nbsp; If array[mid] == value: return mid <br>
+&nbsp;&nbsp;&nbsp; Else If array[mid] < value: low = mid + 1 <br>
+&nbsp;&nbsp;&nbsp; Else If array[mid] > value: high = mid - 1 <br>
+return -1 // Value not found <br><br>
+Answer: O(log<sub>2</sub>(n)) = <b>O(log(n))</b> -> we discard half of the array on every iteration
+
+- Other examples:
+    - Finding all subsets of a set - O(n<sup>2</sup>)
+    - Finding all permutations of a string - O(n!)
+    - Sorting using mergesort - O(nlog(n))
+    - Iterating over all the cells in a matrix of size n by m - O(nm) 
