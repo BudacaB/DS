@@ -24,7 +24,7 @@ https://github.com/williamfiset/Algorithms
 | List |  Dynamic Array<br>Linked List | 
 | Queue | Linked List based Queue<br>Array based Queue<br>Stack Based Queue |
 | Map | Tree Map<br>Hash Map / Hash Table |
-| Vehicle | Gold Cart<br>Bicycle<br>Smart Car |
+| Vehicle | Golf Cart<br>Bicycle<br>Smart Car |
 
 ## Computational Complexity Analysis
 - How much <b>time</b> does this algorithm need to finish?
