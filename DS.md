@@ -120,3 +120,46 @@ Answer: O(log<sub>2</sub>(n)) = <b>O(log(n))</b> -> we discard half of the array
     - Finding all permutations of a string - O(n!)
     - Sorting using mergesort - O(nlog(n))
     - Iterating over all the cells in a matrix of size n by m - O(nm) 
+
+## Static and Dynamic Arrays
+
+### What is a Static Array?
+
+- A static array is a fixed length container containing n elements <b>indexable</b> from the range [0, n-1]
+    - indexable = each slot/index in the array can be referenced with a number
+- A static array is allocated in a contiguous region of memory
+
+### When and where is a static Array used?
+
+- storing and accessing sequential data
+- temporarily storing objects
+- used by IO routines as buffers
+- lookup tables and inverse lookup tables
+- can be used to return multiple values from a function
+- used in dynamic programming to cache answers to subproblems
+
+### Complexity
+
+|Operation | Static Array | Dynamic Array |
+| ---- | ----- | ----- |
+| Access | O(1) |  O(1) |
+| Search | O(n) | O(n) |
+| Insertion | N/A | O(n) |
+| Appending | N/A | O(1) |
+| Deletion | N/A | O(n) |
+
+### Dynamic Array
+
+- The dynamic array can grow and shrink in size
+
+A = [34, 4] <br>
+A.add(-7) -> A = [34, 4, -7] <br>
+A.add(34) -> A = [34, 4, -7, 34] <br>
+A.remove(4) -> A = [34, -7, 34]
+
+### How can we implement a dynamic Array?
+
+- One way is to use a static Array
+    - create a static array with an initial capacity
+    - add elements to the underlying static array, keeping track of the number of elements
+    - if adding another element will exceed the capacity, then create a new static array with twice the capacity and copy the original elements into it
