@@ -235,3 +235,24 @@ you always maintain a reference to the <b>head</b> and the <b>tail</b> of the do
   - advance trav2 to the next node
   - set trav1's Next node to be equal to trav2
   - remove the 'temp' pointer for memory cleanup if needed (for example in C to avoid memory leaks)
+
+### Removing elements from Doubly Linked Lists example
+
+- Remove 9 from the following DLL <br>
+7 <-> 0 <-> 4 <-> 9 <-> 15
+  - create a traverser pointer for the head (we only need one for the DLL)
+  - move the traverse to the 9 node that needs to be removed
+  - set 4's Next node to equal 15 (we have access to both 4 and 15 with the traverser being at 9)
+  - set 15's Previous pointer to equal 4
+  - get rid of 9 / the traverser
+  
+### Complexity analysis
+
+| Operation        | SLL  | DLL  |
+|------------------|------|------|
+| Search           | O(n) | O(n) |
+| Insert at head   | O(1) | O(1) |
+| Insert at tail   | O(1) | O(1) |
+| Remove at head   | O(1) | O(1) |
+| Remove at tail   | O(n) | O(1) |
+| Remove in middle | O(n) | O(n) |
