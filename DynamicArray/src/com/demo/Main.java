@@ -3,7 +3,7 @@ package com.demo;
 public class Main {
 
     public static void main(String[] args) {
-        Array arr = new Array<>();
+        OwnArray arr = new OwnArray();
 
         arr.set(0, 1);
         arr.set(1, 2);
